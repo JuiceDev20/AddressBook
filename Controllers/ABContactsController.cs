@@ -52,7 +52,7 @@ namespace AddressBook.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Email,Address1,Address2,City,State,ZipCode,Phone")] ABContacts aBContacts)
+        public async Task<IActionResult> Create([Bind("FirstName,LastName,Email,Address1,Address2,City,State,ZipCode,Phone")] ABContacts aBContacts)
         {
             if (ModelState.IsValid)
             {
