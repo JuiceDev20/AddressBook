@@ -8,6 +8,7 @@ namespace AddressBook.Models
     public class ABContacts 
     {
         public int Id { get; set; }
+
         [Required]
         [StringLength(30)]
         public string FirstName { get; set; }

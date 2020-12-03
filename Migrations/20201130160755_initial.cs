@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AddressBook.Migrations
 {
@@ -12,9 +13,10 @@ namespace AddressBook.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     FirstName = table.Column<string>(maxLength: 30, nullable: false),
                     LastName = table.Column<string>(maxLength: 30, nullable: false),
+                    Email = table.Column<string>(nullable: true),
                     ImagePath = table.Column<string>(nullable: true),
                     ImageData = table.Column<byte[]>(nullable: true),
                     Address1 = table.Column<string>(nullable: true),

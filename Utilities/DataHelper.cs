@@ -22,7 +22,6 @@ namespace AddressBook.Utilities
             return string.IsNullOrEmpty(databaseUrl) ? connectionString : BuildConnectionString(databaseUrl);
 
         }
-
         public static string BuildConnectionString(string databaseUrl)
         {
             //Provides an object representation of a uniform resource identifier (URI) and easy access to the pasrts of the URI.
@@ -54,7 +53,6 @@ namespace AddressBook.Utilities
                 var dbContextSvc = svcProvider.GetRequiredService<ContactsContext>();
                 await dbContextSvc.Database.MigrateAsync();
             }
-
             catch (Exception ex)
             {
                 Console.WriteLine($"Exception while running Manage Data => {ex}");
