@@ -19,7 +19,7 @@ namespace AddressBook.Controllers
             return View();
         }
 
-        public IActionResult Message()
+        public IActionResult Privacy()
         {
             return View();
         }
