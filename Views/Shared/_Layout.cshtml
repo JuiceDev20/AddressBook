@@ -26,7 +26,7 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="ABContacts" asp-action="Index">View Contacts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" type="button" data-toggle="modal" data-target="#myModal" asp-controller="" asp-action="">Message</a>
+                            <a class="nav-link text-light" type="button" data-toggle="modal" data-target="#myModal">Message</a>
                         </li>
                     </ul>
                 </div>
@@ -37,17 +37,14 @@
     <!----------------------->
     <!-- Modal for Message -->
     <!----------------------->
-
     <div class="modal" id="myModal">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-
                 <!-- Modal Header -->
                 <div class="modal-header bg-info justify-content-center">
                     <h4 class="modal-title text-light">Staying in Touch</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-
                 <!-- Modal body -->
                 <div class="modal-body">
                     <ul>
@@ -58,12 +55,10 @@
                         <h6 class="text-info">Friendship isn't a big thing, it's a million little things. ~ Paulo Coelho</h6>
                     </ul>
                 </div>
-
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
                 </div>
-
             </div>
         </div>
     </div>
