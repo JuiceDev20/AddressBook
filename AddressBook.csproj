@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20210213005439_Alpha.cs" />
-    <Compile Remove="Migrations\20210213005439_Alpha.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Knockout-Sortable" Version="1.2.0" />
+    <PackageReference Include="Knockout.Mapping" Version="2.4.0" />
+    <PackageReference Include="knockout.TypeScript.DefinitelyTyped" Version="1.1.6" />
+    <PackageReference Include="Knockout.Validation" Version="2.0.4" />
+    <PackageReference Include="knockoutjs" Version="3.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.8" />

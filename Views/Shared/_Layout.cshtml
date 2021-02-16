@@ -26,8 +26,14 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="ABContacts" asp-action="Index">View Contacts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" type="button" data-toggle="modal" data-target="#myModal">Message</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="ABContacts" asp-action="Create">Add New</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" data-toggle="modal" data-target="#myModal">Message</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link text-light" data-toggle="modal" data-target="#koUI">KO-UI</a>
+                        </li>*@
                     </ul>
                 </div>
             </div>
@@ -43,16 +49,15 @@
                 <!-- Modal Header -->
                 <div class="modal-header bg-info justify-content-center">
                     <h4 class="modal-title text-light">Staying in Touch</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
                     <ul>
-                        <h6 class="text-info">True friends are always together in spirit. ~ L. M. Montgomery</h6>
+                        <p class="text-info">True friends are always together in spirit. ~ L. M. Montgomery</p>
                         <br />
-                        <h6 class="text-info">Things are never quite as scary when you've got a friend. ~ Bill Watterson</h6>
+                        <p class="text-info">Things are never quite as scary when you've got a friend. ~ Bill Watterson</p>
                         <br />
-                        <h6 class="text-info">Friendship isn't a big thing, it's a million little things. ~ Paulo Coelho</h6>
+                        <p class="text-info">Friendship isn't a big thing, it's a million little things. ~ Paulo Coelho</p>
                     </ul>
                 </div>
                 <!-- Modal footer -->
@@ -63,19 +68,73 @@
         </div>
     </div>
 
+    <!-------------------------->
+    <!-- Modal for Knockout UI-->
+    <!-------------------------->
+    <div class="modal" id="koUI">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title text-danger">Knockout UI</h3>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <h5>Your Event Reservations (<span data-bind="text: seats().length"></span>)</h5>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Attendee Name</th>
+                                            <th>Location</th>
+                                            <th>Surcharge</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <!-- Todo: Generate table body -->
+                                    <tbody data-bind="foreach: seats">
+                                        <tr>
+                                            <td><input data-bind="value: name" /></td>
+                                            <td><select data-bind="options: $root.availableLevels, value: level, optionsText: 'levelName'"></select></td>
+                                            <td data-bind="text: formattedPrice"></td>
+                                            <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button data-bind="click: addSeat, enable: seats().length < 7">Reserve Another</button>
+                                <h3 data-bind="visible: totalSurcharge() > 0">
+                                    Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container bg-light">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-info">
+
+    <footer class="border-top footer text-primary bg-light">
         <div class="container float-right">
-            &copy;  2020 - Address Book App - O J OLMO - Full Stack Dev
+            &copy;  2020 - Address Book Create by: O J OLMO ~ Full Stack Dev ~
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/Knockout.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
     <script>

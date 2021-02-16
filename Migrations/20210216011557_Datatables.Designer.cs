@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AddressBook.Migrations
 {
     [DbContext(typeof(ContactsContext))]
-    [Migration("20201130160755_initial")]
-    partial class initial
+    [Migration("20210216011557_Datatables")]
+    partial class Datatables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

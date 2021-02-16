@@ -4,14 +4,14 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<h2>Add Contacts</h2>
 
 <hr />
 <div class="row">
     <div class="col">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title text-info">My Contacts</h4>
+                <h4 class="card-title text-info">Contact Info</h4>
                 <form asp-action="Create" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row">
@@ -73,13 +73,10 @@
                 </form>
             </div>
         </div>
-        <a class="btn btn-outline-success btn-sm" asp-action="Index">Back to List</a>
+        <a class="btn btn-outline-primary btn-sm" asp-action="Index">Back to List</a>
     </div>
 </div>
 
-<div>
-
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AddressBook.Migrations
 {
-    public partial class initial : Migration
+    public partial class Datatables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
