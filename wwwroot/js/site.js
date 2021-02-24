@@ -3,51 +3,56 @@
 
 // Write your JavaScript code.
 
-//MVVM 1st UI App
-// Class to represent a row in the seat reservations grid
-function SeatReservation(name, initialLevel) {
-    var self = this;
-    self.name = name;
-    self.level = ko.observable(initialLevel);
+// View: Class for the Adrress Book Contacts
+var initialData = [
 
-    self.formattedPrice = ko.computed(function () {
-        var price = self.level().price;
-        return price ? "$" + price.toFixed(2) : "None";
-    });
+    {
+        firstName: "Sensei", lastName: "Miyagi", email: "myEmail@mail.com", address: "123 Chatan Ln", city: "Oki Breeze",
+        state: "FL", zipcode: "12345", phone: [{ type: "Mobile", number: "(321) 333-6699" }]
+    },
 
-}
+];
 
-// Overall viewmodel for Seat Reservations, along with initial state
-function ReservationsViewModel() {
-    var self = this;
+// Overall ViewModel for the App
+var ContactsModel = function (contacts) {
+    var person = this;
+    person.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function (contact) {
+        return { firstName: contact.firstName, lastName: contact.lastName, email: contact.email, address: contact.address,
+            city: contact.city, state: contact.state, zipcode: contact.zipcode, phone: ko.observableArray(contact.phone) };
+    }));
 
-    // Non-editable catalog data - would come from the server
-    self.availableLevels = [
-        { levelName: "Standard (field)", price: 70 },
-        { levelName: "Premium (suite)", price: 155 },
-        { levelName: "Ultimate (skybox)", price: 300 }
-    ];
+    person.addContact = function () {
+        person.contacts.push({ 
+            firstName: "",
+            lastName: "",
+            email: "",
+            address: "",
+            city: "",
+            state: "",
+            zipcode: "",
+            phone: ko.observableArray()
+        });
+    };
 
-    // Editable data
-    self.seats = ko.observableArray([
-        new SeatReservation("Beth", self.availableLevels[0]),
-        new SeatReservation("Erin", self.availableLevels[0]),
-        new SeatReservation("Tere", self.availableLevels[0])
-    ]);
+    person.removeContact = function (contact) {
+        person.contacts.remove(contact);
+    };
 
-    // Operations
-    self.addSeat = function () {
-        self.seats.push(new SeatReservation("", self.availableLevels[0]));
-        self.removeSeat = function (seat) { self.seats.remove(seat) }
-    }
+    person.addPhone = function (contact) {
+        contact.phone.push({
+            number: ""
+        });
+    };
 
-    self.totalSurcharge = ko.computed(function () {
-        var total = 0;
-        for (var i = 0; i < self.seats().length; i++)
-            total += self.seats()[i].level().price;
-        return total;
-    });
-}
+    person.removePhone = function (phone) {
+        $.each(person.contacts(), function () { this.phone.remove(phone) })
+    };
 
-ko.applyBindings(new ReservationsViewModel());
+    person.save = function () {
+        person.lastSavedJson(JSON.stringify(ko.toJS(person.contacts), null, 2));
+    };
 
+    person.lastSavedJson = ko.observable("")
+};
+
+ko.applyBindings(new ContactsModel(initialData));
