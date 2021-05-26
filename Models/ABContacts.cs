@@ -34,6 +34,7 @@ namespace AddressBook.Models
 
         public string ZipCode { get; set; }
 
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
         public DateTime DateAdded { get; set; }
